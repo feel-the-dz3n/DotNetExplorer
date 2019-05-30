@@ -93,5 +93,23 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\InvokeDotNet.AssemblyLoader\InvokeDotNet.AssemblyLoader.csproj">
+      <Project>{97fe2596-bf84-4798-82e4-9f292093f49b}</Project>
+      <Name>InvokeDotNet.AssemblyLoader</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InvokeDotNet.FriendlyAssembly\InvokeDotNet.FriendlyAssembly.csproj">
+      <Project>{561a1143-0239-4d09-9bc6-c976890c4317}</Project>
+      <Name>InvokeDotNet.FriendlyAssembly</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TestExecutable\TestExecutable.csproj">
+      <Project>{3afeac04-8700-429c-8512-066336c4c14c}</Project>
+      <Name>TestExecutable</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TestLibrary\TestLibrary.csproj">
+      <Project>{b4dfa43d-59d2-42b7-ae98-60741bc64fd1}</Project>
+      <Name>TestLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

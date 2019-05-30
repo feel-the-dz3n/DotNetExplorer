@@ -21,13 +21,21 @@ namespace InvokeDotNet
     /// </summary>
     public partial class MainWindow : Window
     {
+        public UIElement MainContent
+        {
+            get => MainContentGrid.Children.Count >= 1 ? MainContentGrid.Children[0] : null;
+            set
+            {
+                MainContentGrid.Children.Clear();
+                if (value != null) MainContentGrid.Children.Add(value);
+            }
+        }
+
         public MainWindow()
         {
-            InitializeComponent();
-            OpenFileDialog o = new OpenFileDialog();
+            App.MainWnd = this;
 
-            if (o.ShowDialog() == true)
-                new FriendlyAssembly(o.FileName).Load();
+            InitializeComponent();
         }
     }
 }

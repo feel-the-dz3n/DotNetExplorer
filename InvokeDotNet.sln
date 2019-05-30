@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestExecutable", "TestExecu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvokeDotNet.AssemblyLoader", "InvokeDotNet.AssemblyLoader\InvokeDotNet.AssemblyLoader.csproj", "{97FE2596-BF84-4798-82E4-9F292093F49B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvokeDotNet.FriendlyAssemblyInterface", "InvokeDotNet.FriendlyAssemblyInterface\InvokeDotNet.FriendlyAssemblyInterface.csproj", "{EC325D6B-B809-4284-987A-821A8EC02A69}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{97FE2596-BF84-4798-82E4-9F292093F49B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97FE2596-BF84-4798-82E4-9F292093F49B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{97FE2596-BF84-4798-82E4-9F292093F49B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC325D6B-B809-4284-987A-821A8EC02A69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC325D6B-B809-4284-987A-821A8EC02A69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC325D6B-B809-4284-987A-821A8EC02A69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC325D6B-B809-4284-987A-821A8EC02A69}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

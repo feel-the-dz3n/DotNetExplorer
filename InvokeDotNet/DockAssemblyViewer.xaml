@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="InvokeDotNet.DockAssemblyViewer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:InvokeDotNet"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid x:Name="GridNotLoaded" Background="#3FFFFFFF">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock FontSize="16">The assembly is not loaded</TextBlock>
+                <Button x:Name="btnLoadAsm" Click="BtnLoadAsm_Click" Width="65">Load</Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -8,10 +8,10 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace InvokeDotNet
+namespace InvokeDotNet.FriendlyAssembly
 {
     [Serializable]
-    public class FriendlyAssembly
+    public class FriendlyAssembly : MarshalByRefObject
     {
         public delegate void BasicHandler(FriendlyAssembly sender);
         public delegate void BasicExceptionHandler(FriendlyAssembly sender, Exception exception);
@@ -23,10 +23,10 @@ namespace InvokeDotNet
         public event BasicExceptionHandler UnloadEnd;
 
         public FileInfo AssemblyFile { get; private set; }
-        public Assembly NetAssembly { get; private set; }
         public AppDomain Domain { get; private set; }
+        public RemoteLoader Loader { get; private set; }
 
-        public bool IsAssemblyLoaded => NetAssembly != null;
+        public bool IsLoaded => Domain != null;
 
         public FriendlyAssembly(string fileName)
             => AssemblyFile = new FileInfo(fileName);
@@ -57,32 +57,30 @@ namespace InvokeDotNet
         public void Load()
         {
             // Do not load the assembly if it's already loaded
-            if (IsAssemblyLoaded) return;
+            if (IsLoaded) return;
 
-            // Create AssemblyLoader domain to load assembly
-            Domain = AppDomain.CreateDomain(AssemblyFile.Name + "_domain");
+            // Create domain
+            AppDomainSetup mySetupInfo = new AppDomainSetup();
+            // mySetupInfo.ApplicationBase = AssemblyFile.Directory.FullName;
+            mySetupInfo.ApplicationName = AssemblyFile.Name + "_InvokeDotNet";
+            // mySetupInfo.LoaderOptimization = LoaderOptimization.MultiDomainHost;
 
+            Domain = AppDomain.CreateDomain(AssemblyFile.Name + "_InvokeDotNet", null, mySetupInfo);
+
+            // Create instance for remote loader
+            Loader = (RemoteLoader)Domain.CreateInstanceFromAndUnwrap(
+             typeof(RemoteLoader).Assembly.Location,
+             typeof(RemoteLoader).FullName);
+            
             // Events
             Domain.AssemblyLoad += Domain_AssemblyLoad;
             Domain.AssemblyResolve += Domain_AssemblyResolve;
             Domain.UnhandledException += Domain_UnhandledException;
 
-            // Parameters for loader
-            string loaderPath = Domain.BaseDirectory + "InvokeDotNet.AssemblyLoader.exe";
-            string[] loaderArgs = new string[] { AssemblyFile.FullName };
+            // Load assembly in remote loader
+            Loader.LoadFile(AssemblyFile);// Domain.GetAssemblies().First(x => x.Location == AssemblyFile.FullName);
 
-            // Execute loader
-            Domain.ExecuteAssembly(loaderPath, loaderArgs);
-
-            // Get assembly instance
-            NetAssembly = Domain.GetAssemblies().First(x => x.Location == AssemblyFile.FullName);
-
-            // Assembly not loaded for some reason
-            if (NetAssembly == null)
-            {
-                Unload();
-                throw new Exception();
-            }
+            // Debugger.Log(0, "", "Full name: " + Loader.NetAssembly.FullName + Environment.NewLine);
         }
 
         private void Domain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
@@ -122,15 +120,17 @@ namespace InvokeDotNet
 
         public void Unload()
         {
-            UnloadBegin?.Invoke(this);
-
-            var dmn = Domain;
-
-            Domain = null;
-            NetAssembly = null;
-
-            if (Domain != null)
+            if (IsLoaded)
+            {
                 AppDomain.Unload(Domain);
+                Domain = null;
+            }
+        }
+
+        public override string ToString()
+        {
+            if (!IsLoaded) return AssemblyFile.Name + " (unloaded)";
+            else return Loader.FullName;
         }
     }
 }

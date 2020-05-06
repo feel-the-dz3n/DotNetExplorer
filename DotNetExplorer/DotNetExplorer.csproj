@@ -13,9 +13,11 @@
   </ItemGroup>
   <ItemGroup>
     <AvaloniaResource Remove="AssemblyWindow.xaml" />
+    <AvaloniaResource Remove="MessageBox.xaml" />
     <AvaloniaResource Remove="WelcomeWindow.xaml" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="MessageBox.xaml" />
     <None Remove="WelcomeWindow.xaml" />
   </ItemGroup>
   <ItemGroup>
@@ -24,6 +26,11 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="WelcomeWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MessageBox.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>

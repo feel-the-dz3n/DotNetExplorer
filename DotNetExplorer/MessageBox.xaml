@@ -1,0 +1,15 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        x:Class="DotNetExplorer.MessageBox"
+        Title=".NET Explorer Dialog" MinHeight="100" MinWidth="275" MaxWidth="500" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterOwner">
+  <Grid>
+    <TextBlock x:Name="TbText" Margin="15,15,15,65" TextWrapping="Wrap">Some text</TextBlock>
+    <Grid VerticalAlignment="Bottom" Height="50">
+      <WrapPanel x:Name="PanelButtons" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,15,0">
+      </WrapPanel>
+    </Grid>
+  </Grid>
+</Window>

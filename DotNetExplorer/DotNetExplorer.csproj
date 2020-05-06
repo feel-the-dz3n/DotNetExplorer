@@ -12,7 +12,24 @@
     </AvaloniaResource>
   </ItemGroup>
   <ItemGroup>
+    <AvaloniaResource Remove="AssemblyWindow.xaml" />
+    <AvaloniaResource Remove="WelcomeWindow.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="WelcomeWindow.xaml" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Avalonia" Version="0.9.0" />
     <PackageReference Include="Avalonia.Desktop" Version="0.9.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="WelcomeWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="AssemblyWindow.xaml.cs">
+      <DependentUpon>AssemblyWindow.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>

@@ -25,20 +25,22 @@ namespace DotNetExplorer.Models
             {
                 TypeName = type.GetFriendlyName();
 
+                var flags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.Instance;
+
                 var fields = new ObservableCollection<TypeMemberModel>(
-                    type.GetFields().Select(x => new TypeMemberModel(x)).ToList());
+                    type.GetFields(flags).Select(x => new TypeMemberModel(x)).ToList());
                 var cnt = new ContainterModel() { Name = $"Fields ({fields.Count})" };
                 cnt.Models.AddRange(fields);
                 Models.Add(cnt);
 
                 var props = new ObservableCollection<TypeMemberModel>(
-                    type.GetProperties().Select(x => new TypeMemberModel(x)).ToList());
+                    type.GetProperties(flags).Select(x => new TypeMemberModel(x)).ToList());
                 cnt = new ContainterModel() { Name = $"Properties ({props.Count})" };
                 cnt.Models.AddRange(props);
                 Models.Add(cnt);
 
                 var methods = new ObservableCollection<TypeMemberModel>(
-                    type.GetMethods().Select(x => new TypeMemberModel(x)).ToList());
+                    type.GetMethods(flags).Select(x => new TypeMemberModel(x)).ToList());
                 cnt = new ContainterModel() { Name = $"Methods ({methods.Count})" };
                 cnt.Models.AddRange(methods);
                 Models.Add(cnt);

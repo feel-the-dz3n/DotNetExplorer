@@ -13,15 +13,18 @@
           <MenuItem x:Name="MenuItemNewOpen" Header="Open in a new window"/>
           <MenuItem x:Name="MenuItemOpen" Header="Open in this window"/>
         </MenuItem>
+        <Separator/>
         <MenuItem x:Name="MenuItemClose" Header="Exit"/>
       </MenuItem>
       <MenuItem Header="Debug" IsEnabled="False">
         <MenuItem Header="Start in current domain (debug)"/>
         <MenuItem Header="Start as application (no debug)"/>
       </MenuItem>
-      <MenuItem Header="Help" IsEnabled="False">
-        <MenuItem Header="Repository"/>
-        <MenuItem Header="About"/>
+      <MenuItem Header="Help">
+        <MenuItem Header="Welcome window" Click="WelcomeWindowClick"/>
+        <Separator/>
+        <MenuItem Header="Repository" IsEnabled="False"/>
+        <MenuItem Header="About" IsEnabled="False"/>
       </MenuItem>
     </Menu>
     <Grid Margin="0,20,0,0">

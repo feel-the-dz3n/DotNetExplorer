@@ -73,6 +73,11 @@ namespace DotNetExplorer
             }
         }
 
+        private void WelcomeWindowClick(object sender, RoutedEventArgs e)
+        {
+            new WelcomeWindow().Show();
+        }
+
         private async void OpenClick(object sender, RoutedEventArgs e)
         {
             var files = await AssemblyLoader.ShowOpenDialog(this);

@@ -23,10 +23,6 @@ namespace DotNetExplorer
 
             if (version != null)
                 this.FindControl<TextBlock>("TbVersion").Text = "v" + version;
-
-#if DEBUG
-            new AssemblyWindow(TestAssembly.Fetch.Get()).Show();
-#endif
         }
 
         private async void LoadButtonClick(object sender, RoutedEventArgs e)

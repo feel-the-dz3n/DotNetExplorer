@@ -15,7 +15,11 @@ namespace DotNetExplorer
         {
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
+#if DEBUG
+                desktop.MainWindow = new AssemblyWindow(TestAssembly.Fetch.Get());
+#else
                 desktop.MainWindow = new WelcomeWindow();
+#endif
             }
 
             base.OnFrameworkInitializationCompleted();

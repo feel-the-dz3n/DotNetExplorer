@@ -4,5 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="DotNetExplorer.AssemblyDetailsCtrl">
-  <TextBlock>Assembly information will be here</TextBlock>
+  <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="5">
+    <TextBlock x:Name="TbTitle" HorizontalAlignment="Left" FontSize="18">Assembly text</TextBlock>
+    <TextBlock x:Name="TbInfo" HorizontalAlignment="Left">Assembly text</TextBlock>
+  </StackPanel>
 </UserControl>

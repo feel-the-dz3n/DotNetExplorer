@@ -2,17 +2,20 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" Width="800" Height="450"
         x:Class="DotNetExplorer.WelcomeWindow"
-        Title="Welcome to .NET Explorer" WindowStartupLocation="CenterScreen">
-    <Grid Margin="25">
-      <WrapPanel HorizontalAlignment="Left" VerticalAlignment="Top">
-        <TextBlock FontSize="18" VerticalAlignment="Center">Welcome to .NET Explorer</TextBlock>
-        <TextBlock x:Name="TbVersion" Opacity="0.5" FontSize="14" VerticalAlignment="Center" Margin="5,0,0,0">v0.0.0</TextBlock>
-      </WrapPanel>
-      <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top">
-        <Button x:Name="BtnLoadAssembly" Click="LoadButtonClick" MinWidth="200" MinHeight="80">Load Assembly</Button>
-        <Button x:Name="BtnClose" Click="CloseButtonClick" Margin="0,20,0,0" MinWidth="200" MinHeight="80">Close</Button>
-      </StackPanel>
+        Title="Welcome to .NET Explorer" CanResize="false" WindowStartupLocation="CenterScreen">
+  <Grid Margin="25">
+    <WrapPanel HorizontalAlignment="Left" VerticalAlignment="Top">
+      <TextBlock FontSize="18" VerticalAlignment="Center">Welcome to .NET Explorer</TextBlock>
+      <TextBlock x:Name="TbVersion" Opacity="0.5" FontSize="14" VerticalAlignment="Center" Margin="5,0,0,0">v0.0.0</TextBlock>
+    </WrapPanel>
+    <Grid Margin="0,25,220,0" Background="LightGray">
+      
     </Grid>
+    <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top">
+      <Button x:Name="BtnLoadAssembly" Click="LoadButtonClick" MinWidth="200" MinHeight="80">Load Assembly</Button>
+      <Button x:Name="BtnClose" Click="CloseButtonClick" Margin="0,20,0,0" MinWidth="200" MinHeight="80">Close</Button>
+    </StackPanel>
+  </Grid>
 </Window>

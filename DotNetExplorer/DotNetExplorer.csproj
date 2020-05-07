@@ -19,10 +19,12 @@
   <ItemGroup>
     <None Remove="MessageBox.xaml" />
     <None Remove="WelcomeWindow.xaml" />
+    <None Remove="AssemblyWindow.xaml" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Avalonia" Version="0.9.0" />
     <PackageReference Include="Avalonia.Desktop" Version="0.9.0" />
+    <ProjectReference Condition="'$(Configuration)'=='Debug'" Include="../TestAssembly/TestAssembly.csproj"/>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="WelcomeWindow.xaml">
@@ -35,8 +37,8 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="AssemblyWindow.xaml.cs">
-      <DependentUpon>AssemblyWindow.xaml</DependentUpon>
-    </Compile>
+    <EmbeddedResource Include="AssemblyWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

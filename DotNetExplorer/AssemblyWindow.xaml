@@ -4,6 +4,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="DotNetExplorer.AssemblyWindow"
-        Title="DotNetExplorer">
-    Welcome to Avalonia!
+        Title="Assembly View" WindowStartupLocation="CenterScreen">
+  <Grid>
+    <TabControl>
+      <TabItem Header="Details">
+        <TextBlock>Hello</TextBlock>
+      </TabItem>
+      <TabItem Header="Types">
+        <Button>Get types</Button>
+      </TabItem>
+    </TabControl>
+  </Grid>
 </Window>

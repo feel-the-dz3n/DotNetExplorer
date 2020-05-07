@@ -1,0 +1,38 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:models="clr-namespace:DotNetExplorer.Models;assembly=DotNetExplorer"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="DotNetExplorer.AssemblyTreeCtrl">
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="25"/>
+      <RowDefinition/>
+    </Grid.RowDefinitions>
+    <StackPanel Orientation="Horizontal" IsEnabled="False" Grid.Row="0" Spacing="5">
+      <Button>Open All</Button>
+      <Button>Close All</Button>
+      <Button>Test</Button>
+      <TextBlock VerticalAlignment="Center">--- Some test area</TextBlock>
+    </StackPanel>
+    <Grid Grid.Row="1">
+      <TreeView x:Name="MainView" BorderBrush="Transparent">
+        <TreeView.DataTemplates>
+          <TreeDataTemplate DataType="models:AssemblyModel" ItemsSource="{Binding Types}">
+            <TextBlock Text="{Binding Name}" />
+          </TreeDataTemplate>
+          <TreeDataTemplate DataType="models:TypeModel" ItemsSource="{Binding Models}">
+            <TextBlock Text="{Binding TypeName}" />
+          </TreeDataTemplate>
+          <TreeDataTemplate DataType="models:ContainterModel" ItemsSource="{Binding Models}">
+            <TextBlock Text="{Binding Name}"/>
+          </TreeDataTemplate>
+          <DataTemplate DataType="models:TypeMemberModel">
+            <TextBlock Text="{Binding TechnicalName}"/>
+          </DataTemplate>
+        </TreeView.DataTemplates>
+      </TreeView>
+    </Grid>
+  </Grid>
+</UserControl>

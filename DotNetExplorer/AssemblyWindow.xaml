@@ -24,13 +24,13 @@
         <MenuItem Header="About"/>
       </MenuItem>
     </Menu>
-    <TabControl Margin="0,10,0,0">
-      <TabItem Header="Details">
-        <c:AssemblyDetailsCtrl x:Name="AssemblyDetailsCtrl"/>
-      </TabItem>
-      <TabItem Header="Types">
-        <ListBox x:Name="LbTypes"/>
-      </TabItem>
-    </TabControl>
+    <Grid Margin="0,20,0,0">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition/>
+        <ColumnDefinition/>
+      </Grid.ColumnDefinitions>
+      <c:AssemblyDetailsCtrl x:Name="AssemblyDetailsCtrl" Grid.Column="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+      <c:AssemblyTreeCtrl x:Name="Tree" Grid.Column="1"/>
+    </Grid>
   </Grid>
 </Window>

@@ -45,14 +45,13 @@ namespace DotNetExplorer
             if (Model != null)
             {
                 this.Title = $"{new FileInfo(Model.Location).Name} | .NET Explorer";
-                this.FindControl<ListBox>("LbTypes").Items = Model.GetTypes().Select(x => new TypeLinkCtrl(x));
             }
             else
             {
                 this.Title = ".NET Explorer";
-                this.FindControl<ListBox>("LbTypes").Items = null;
             }
 
+            this.FindControl<AssemblyTreeCtrl>("Tree").Model = Model;
             this.FindControl<AssemblyDetailsCtrl>("AssemblyDetailsCtrl").Model = Model;
         }
 

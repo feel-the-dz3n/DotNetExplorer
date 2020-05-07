@@ -8,14 +8,14 @@
   <Grid>
     <Menu Height="20" VerticalAlignment="Top">
       <MenuItem Header="File">
-        <MenuItem Header="Open"/>
-        <MenuItem Header="Exit"/>
+        <MenuItem x:Name="MenuItemOpen" Header="Open"/>
+        <MenuItem x:Name="MenuItemClose" Header="Exit"/>
       </MenuItem>
-      <MenuItem Header="Debug">
+      <MenuItem Header="Debug" IsEnabled="False">
         <MenuItem Header="Start in current domain (debug)"/>
         <MenuItem Header="Start as application (no debug)"/>
       </MenuItem>
-      <MenuItem Header="Help">
+      <MenuItem Header="Help" IsEnabled="False">
         <MenuItem Header="Repository"/>
         <MenuItem Header="About"/>
       </MenuItem>

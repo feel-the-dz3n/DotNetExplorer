@@ -15,11 +15,13 @@
     <AvaloniaResource Remove="AssemblyDetailsCtrl.xaml" />
     <AvaloniaResource Remove="AssemblyWindow.xaml" />
     <AvaloniaResource Remove="MessageBox.xaml" />
+    <AvaloniaResource Remove="TypeLinkCtrl.xaml" />
     <AvaloniaResource Remove="WelcomeWindow.xaml" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="AssemblyDetailsCtrl.xaml" />
     <None Remove="MessageBox.xaml" />
+    <None Remove="TypeLinkCtrl.xaml" />
     <None Remove="WelcomeWindow.xaml" />
     <None Remove="AssemblyWindow.xaml" />
   </ItemGroup>
@@ -45,6 +47,11 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AssemblyDetailsCtrl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="TypeLinkCtrl.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>

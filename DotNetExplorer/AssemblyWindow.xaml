@@ -26,7 +26,7 @@
         <c:AssemblyDetailsCtrl x:Name="AssemblyDetailsCtrl"/>
       </TabItem>
       <TabItem Header="Types">
-        <Button>Get types</Button>
+        <ListBox x:Name="LbTypes"/>
       </TabItem>
     </TabControl>
   </Grid>

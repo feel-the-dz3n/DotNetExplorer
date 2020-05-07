@@ -9,7 +9,10 @@
   <Grid>
     <Menu Height="20" VerticalAlignment="Top">
       <MenuItem Header="File">
-        <MenuItem x:Name="MenuItemOpen" Header="Open"/>
+        <MenuItem Header="Open">
+          <MenuItem x:Name="MenuItemNewOpen" Header="Open in a new window"/>
+          <MenuItem x:Name="MenuItemOpen" Header="Open in this window"/>
+        </MenuItem>
         <MenuItem x:Name="MenuItemClose" Header="Exit"/>
       </MenuItem>
       <MenuItem Header="Debug" IsEnabled="False">

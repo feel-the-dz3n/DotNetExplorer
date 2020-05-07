@@ -2,6 +2,7 @@
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -18,6 +19,7 @@ namespace DotNetExplorer
 #if DEBUG
             this.AttachDevTools();
 #endif
+            this.FindControl<MenuItem>("MenuItemNewOpen").Click += NewOpenClick;
             this.FindControl<MenuItem>("MenuItemOpen").Click += OpenClick;
             this.FindControl<MenuItem>("MenuItemClose").Click += CloseClick;
         }
@@ -54,9 +56,39 @@ namespace DotNetExplorer
             this.FindControl<AssemblyDetailsCtrl>("AssemblyDetailsCtrl").Model = Model;
         }
 
+
+        private async void NewOpenClick(object sender, RoutedEventArgs e)
+        {
+            var files = await AssemblyLoader.ShowOpenDialog(this);
+            foreach (var file in files)
+            {
+                try
+                {
+                    var asm = AssemblyLoader.Load(file);
+                    new AssemblyWindow(asm).Show();
+                }
+                catch (Exception ex)
+                {
+                    AssemblyLoader.ShowExceptionDialog(this, file, ex);
+                }
+            }
+        }
+
         private async void OpenClick(object sender, RoutedEventArgs e)
         {
-            await new WelcomeWindow().ShowDialog(this);
+            var files = await AssemblyLoader.ShowOpenDialog(this);
+            if (files.Length == 0) return;
+            var file = files[0];
+
+            try
+            {
+                var asm = AssemblyLoader.Load(file);
+                this.Model = asm;
+            }
+            catch (Exception ex)
+            {
+                AssemblyLoader.ShowExceptionDialog(this, file, ex);
+            }
         }
 
         private void CloseClick(object sender, RoutedEventArgs e)

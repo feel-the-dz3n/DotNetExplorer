@@ -27,20 +27,7 @@ namespace DotNetExplorer
 
         private async void LoadButtonClick(object sender, RoutedEventArgs e)
         {
-            var dialog = new OpenFileDialog();
-            dialog.AllowMultiple = true;
-
-            var extNet = new FileDialogFilter();
-            extNet.Name = ".NET Assembles";
-            extNet.Extensions.AddRange(new string[] { "dll", "exe" });
-
-            var extAll = new FileDialogFilter();
-            extAll.Name = "All Files";
-            extAll.Extensions.Add("*");
-
-            dialog.Filters.AddRange(new FileDialogFilter[] { extNet, extAll });
-
-            var files = await dialog.ShowAsync(this);
+            var files = await AssemblyLoader.ShowOpenDialog(this);
 
             if (files.Length == 0)
                 return;
@@ -51,19 +38,13 @@ namespace DotNetExplorer
             {
                 try
                 {
-                    var asm = Assembly.LoadFile(new FileInfo(file).FullName);
+                    var asm = AssemblyLoader.Load(file);
                     new AssemblyWindow(asm).Show();
                     loadedAssemblies++;
                 }
                 catch (Exception ex)
                 {
-                    var b = new StringBuilder();
-                    b.AppendLine("Unable to load assembly.");
-                    b.AppendLine();
-                    b.AppendLine("File: " + file);
-                    b.AppendLine("Exception: " + ex.GetType().Name);
-                    b.AppendLine("Message: " + ex.Message);
-                    await new MessageBox(b.ToString(), ".NET Explorer: Error").ShowDialog(this);
+                    AssemblyLoader.ShowExceptionDialog(this, file, ex);
                 }
             }
 

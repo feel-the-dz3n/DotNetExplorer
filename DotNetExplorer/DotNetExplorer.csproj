@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.0</TargetFramework>
@@ -12,11 +12,13 @@
     </AvaloniaResource>
   </ItemGroup>
   <ItemGroup>
+    <AvaloniaResource Remove="AssemblyDetailsCtrl.xaml" />
     <AvaloniaResource Remove="AssemblyWindow.xaml" />
     <AvaloniaResource Remove="MessageBox.xaml" />
     <AvaloniaResource Remove="WelcomeWindow.xaml" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="AssemblyDetailsCtrl.xaml" />
     <None Remove="MessageBox.xaml" />
     <None Remove="WelcomeWindow.xaml" />
     <None Remove="AssemblyWindow.xaml" />
@@ -24,7 +26,7 @@
   <ItemGroup>
     <PackageReference Include="Avalonia" Version="0.9.0" />
     <PackageReference Include="Avalonia.Desktop" Version="0.9.0" />
-    <ProjectReference Condition="'$(Configuration)'=='Debug'" Include="../TestAssembly/TestAssembly.csproj"/>
+    <ProjectReference Condition="'$(Configuration)'=='Debug'" Include="../TestAssembly/TestAssembly.csproj" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="WelcomeWindow.xaml">
@@ -38,6 +40,11 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AssemblyWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AssemblyDetailsCtrl.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>

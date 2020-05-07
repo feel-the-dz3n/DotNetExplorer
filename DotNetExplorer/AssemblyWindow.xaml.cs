@@ -40,11 +40,12 @@ namespace DotNetExplorer
 
         private void UpdateView()
         {
-            this.Title = $"{new FileInfo(Model.Location).Name} | .NET Explorer";
+            if (Model != null)
+                this.Title = $"{new FileInfo(Model.Location).Name} | .NET Explorer";
+            else
+                this.Title = ".NET Explorer";
 
-            var items = Model.GetTypes().Select(x => new TextBlock() { Text = x.Name });
-
-            // this.FindControl<ListBox>("LbTest").Items = items;
+            this.FindControl<AssemblyDetailsCtrl>("AssemblyDetailsCtrl").Model = Model;
         }
 
         private async void OpenClick(object sender, RoutedEventArgs e)

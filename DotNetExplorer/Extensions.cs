@@ -12,6 +12,47 @@ namespace DotNetExplorer
             return type.Name;
         }
 
+        public static string GetTechnicalName(this Type x)
+        {
+            var b = new StringBuilder();
+
+            if (x.IsPublic)
+                b.Append("public ");
+
+            if (x.IsSealed)
+                b.Append("sealed ");
+
+            if (x.IsInterface)
+                b.Append("interface ");
+            else if (x.IsAbstract)
+                b.Append("abstract ");
+
+            if (x.IsEnum)
+                b.Append("enum ");
+
+            if (x.IsClass)
+                b.Append("class ");
+
+            b.Append(x.GetFriendlyName());
+
+            var baseTypes = new List<Type>();
+            if (x.BaseType != null && x.BaseType != typeof(object)) baseTypes.Add(x.BaseType);
+            baseTypes.AddRange(x.GetInterfaces());
+
+            if (baseTypes.Count >= 1)
+            {
+                b.Append(" : ");
+                for (int i = 0; i < baseTypes.Count; i++)
+                {
+                    b.Append(baseTypes[i].GetFriendlyName());
+                    if (i < baseTypes.Count - 1)
+                        b.Append(", ");
+                }
+            }
+
+            return b.ToString();
+        }
+
         public static string GetTechnicalName(this MethodInfo x)
         {
             var b = new StringBuilder();

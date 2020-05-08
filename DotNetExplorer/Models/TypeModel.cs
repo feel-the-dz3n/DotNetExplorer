@@ -23,7 +23,7 @@ namespace DotNetExplorer.Models
 
             if (type != null)
             {
-                TypeName = type.GetFriendlyName();
+                TypeName = type.GetTechnicalName();
 
                 var flags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.Instance;
 
